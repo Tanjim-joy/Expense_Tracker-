@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AppUser>
+
+@{ 
+    ViewData["Title"] = "Index";
+}
+<h2 class="text-success">All Users List</h2>
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-end mb-1">
+            <a asp-controller="User" asp-action="Create" class="btn btn-outline-success">Add New</a>
+        </div>
+        <form asp-controller="User" asp-action="index"> </form>      
+    </div>
+    <div class="col-12">
+        <table class="table table-bordered table-striped">
+            <thead class="table-primary text-center">
+                <tr>
+                    <th>User Name</th>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody class="table-active text-center">
+                @foreach(var x in Model)
+            {
+                <tr>
+                    <td>@x.UserName</td>
+                    <td>@x.FirstName</td>
+                    <td>@x.Email</td>
+
+                        @if (x.LockoutEnd > DateTime.Now && x.LockoutEnd != null)
+                         {
+                <td>
+                    <a asp-controller="User" asp-action="Edit" asp-route-id="@x.Id" class="btn btn-outline-light">Edit</a>
+                    <a asp-controller="User" asp-action="Info" asp-route-id="@x.Id" class="btn btn-outline-info">Info</a>
+                    <a asp-controller="User" asp-action="Act" asp-route-id="@x.Id" class="btn btn-outline-primary">Active</a>
+                    <a asp-controller="User" asp-action="Delete" asp-route-id="@x.Id" class="btn btn-outline-danger">Delete</a>
+
+                </td>
+                         }
+                        else
+                        {
+                              <td>
+                                <a asp-controller="User" asp-action="Edit" asp-route-id="@x.Id" class="btn btn-outline-light">Edit</a>
+                                <a asp-controller="User" asp-action="Info" asp-route-id="@x.Id" class="btn btn-outline-info">Info</a>
+                                <a asp-controller="User" asp-action="Lock" asp-route-id="@x.Id" class="btn btn-outline-danger">Lock</a>
+                              </td>
+
+                        }
+                
+                </tr>
+            }
+            </tbody>
+
+        </table>
+    </div>
+</div>

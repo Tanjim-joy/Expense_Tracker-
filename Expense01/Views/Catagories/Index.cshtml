@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Categories>
+
+@{ 
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="card border-danger mt-4 bg-dark ml-3 col-3" style="max-width: 17rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Total Expense</h5>
+            <h1 class="text-center">@ViewBag.Count</h1>
+        </div>
+    </div>
+    <div class="card border-danger col-3 mt-4 bg-dark ml-2" style="max-width: 17rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Total Amount</h5>
+            <h1 class="text-center">@ViewBag.Amount</h1>
+        </div>
+    </div>
+    <div class="card border-danger col-3 mt-4 bg-dark ml-2" style="max-width: 17rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Max Amount</h5>
+            <h1 class="text-center">@ViewBag.M.ToString("0.00")</h1>
+        </div>
+    </div>
+    <div class="card border-danger col-3 mt-4 bg-dark ml-2" style="max-width: 17rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Max Expense</h5>
+            <h1 class="text-center">@ViewBag.l</h1>
+        </div>
+    </div>
+    <div class="col-12">
+        <h2 class="text-success">Expnese Categories</h2>
+        <div class="d-flex justify-content-end mb-1">
+            <a asp-controller="Catagories" asp-action="Create" class="btn btn-primary btn-sm">Add New</a>
+        </div>
+    </div>
+    <div class="col-12">
+        <table class="table table-bordered text-white table-active text-center">
+            <thead class="table-primary bg-light ">
+                <tr>
+                    <th>Category Name</th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var data in Model)
+                {
+                    <tr>
+                        <td>@data.CName</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" asp-controller="Catagories" asp-action="Edit" asp-route-id="@data.CategoriesId">Edit</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Catagories" asp-action="Delete" asp-route-id="@data.CategoriesId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

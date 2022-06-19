@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DailyExpense>
+
+@{ 
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="card border-danger mt-4 bg-dark ml-3 col-3" style="max-width: 17rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Expense Catagories</h5>
+            <h1 class="text-center">@ViewBag.Count</h1>
+        </div>
+    </div>
+    <div class="card border-danger col-3 mt-4 bg-dark ml-2" style="max-width: 17rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Total Amount</h5>
+            <h1 class="text-center">@ViewBag.Amount.ToString("0.00")</h1>
+        </div>
+    </div>
+    <div class="card border-danger col-3 mt-4 bg-dark ml-2" style="max-width: 17rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Max Amount</h5>
+            <h1 class="text-center">@ViewBag.M.ToString("0.00")</h1>
+        </div>
+    </div>
+    <div class="card border-danger col-3 mt-4 bg-dark ml-2" style="max-width: 17rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Average Amount</h5>
+            <h1 class="text-center">@ViewBag.avg.ToString("0.00")</h1>
+        </div>
+    </div>
+    <div class="col-12">
+        <h2 class="text-success mt-2">Daily Expense List</h2>
+
+        <div class="d-flex justify-content-end mb-1">
+            <a asp-controller="Expense" asp-action="Create" class="btn btn-primary btn-sm">Add New</a>
+        </div>
+    </div>
+    <div class="col-12">
+        <table class="table table-bordered text-white table-active text-center">
+            <thead class="table-primary bg-light">
+                <tr class="table-active">
+                    <th>Expense Name</th>
+                    <th>Amount</th>
+                    <th>Categories</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.EName</td>
+                        <td>@x.Amount.ToString("0.00")</td>
+                        <td>@x.Categories.CName</td>
+                        <td>@x.EDate.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" asp-controller="Expense" asp-action="Edit" asp-route-id="@x.ExpenseId">Edit</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Expense" asp-action="Delete" asp-route-id="@x.ExpenseId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

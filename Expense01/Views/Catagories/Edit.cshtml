@@ -1,0 +1,55 @@
+﻿@model Expense01.Models.Categories
+@{
+    ViewData["Titel"] = "Edit";
+}
+
+<h2 class="text-success">Edit Categories</h2>
+<form asp-action="Edit" method="post" enctype="multipart/form-data" class="text-light lead">
+    <input type="hidden" asp-for="CategoriesId" />
+    <div class="p-4 rounded border">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        <h3>@ViewBag.message</h3>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="CName"></label>
+            </div>
+            <div class="col-10">
+                <input asp-for="CName" class="form-group" />
+            </div>
+            <span asp-validation-for="CName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-outline-primary" value="Save" />
+            <a asp-action="Index" class="btn btn-outline-secondary">Back To Index</a>
+     
+        </div>
+    </div>
+</form>
+
+@*<form asp-action="Edit" asp-controller="Catagories" method="post">
+    <input type="hidden" asp-for="CategoriesId" />
+    <div class="form-group row my-1">
+        <label class="col-form-label col-form-label-sm col-2">Category Name</label>
+        <div class="col-6">
+            <input type="text" class="form-control form-control-sm" asp-for="CName" />
+            <span asp-validation-for="CName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row my-1">
+
+        <div class="col-10 offset-2">
+            <button type="submit" class="btn btn-success">Update</button>
+        </div>
+    </div>
+</form>
+<a asp-action="Index" class="btn-link">Back to list</a>*@
+
+@section scripts {
+    <script src="~/libs/jquery/jquery.min.js"></script>
+    <script src="~/libs/validation/jquery.validate.min.js"></script>
+    <script src="~/libs/validation/jquery.validate.unobtrusive.min.js"></script>
+}

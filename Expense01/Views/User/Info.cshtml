@@ -1,0 +1,59 @@
+﻿@model Expense01.Models.AppUser
+
+@{
+    ViewData["Titel"] = "Info";
+}
+
+<h2 class="text-success">View Users Info</h2>
+<form asp-action="Info" method="post" enctype="multipart/form-data" class="text-light lead">
+    <div class="p-4 rounded border">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        <h3>@ViewBag.message</h3>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="FirstName"></label>
+            </div>
+            <div class="col-10">
+                <input asp-for="FirstName" class="form-group" readonly ="readonly"/>
+            </div>
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="LastName"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="LastName" class="form-group" readonly ="readonly"/>
+            </div>
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Email"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Email" class="form-group" readonly ="readonly" />
+            </div>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="UserName">User Name</label>
+            </div>
+            <div class="col-10">
+                <input asp-for="UserName" class="form-group" readonly ="readonly"/>
+            </div>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <a asp-action="Index" class="btn btn-outline-secondary">Back To Index</a>
+            <a asp-action="Create" class="btn btn-outline-secondary">Add User</a>
+        </div>
+
+    </div>
+
+</form>
