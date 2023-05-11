@@ -1,0 +1,74 @@
+﻿@model Expense01.Models.AppUser
+@{
+    ViewData["Titel"] = "Create";
+}
+
+<h2 class="text-success">Create New Users</h2>
+<div class="col-12">
+    <div class="d-flex justify-content-end mb-1">
+        @*<a asp-controller="User" asp-action="Create" class="btn btn-outline-success">Add New</a>*@
+    </div>
+    <form asp-controller="User" asp-action="index"> </form>
+</div>
+<form asp-action="Create" method="post" enctype="multipart/form-data" class="text-light lead">
+    <div class="p-4 rounded border">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        <h3>@ViewBag.message</h3>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="FirstName"></label>
+            </div>
+            <div class="col-10">
+                <input asp-for="FirstName" class="form-group" />
+            </div>
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="LastName"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="LastName" class="form-group" />
+            </div>
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Email"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Email" class="form-group" />
+            </div>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="UserName">User Name</label>
+            </div>
+            <div class="col-10">
+                <input asp-for="UserName" class="form-group" />
+            </div>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="PasswordHash">Password</label>
+            </div>
+            <div class="col-5">
+                <input asp-for="PasswordHash" class="form-group" type="password" />
+            </div>
+            <span asp-validation-for="PasswordHash" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-outline-primary" value="Save" />
+            <a asp-action="Index" class="btn btn-outline-secondary">Back To Index</a>
+        </div>
+
+    </div>
+
+</form>

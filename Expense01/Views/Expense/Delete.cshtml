@@ -1,0 +1,64 @@
+﻿@model Expense01.Models.DailyExpense
+@{
+    ViewData["Titel"] = "Delete";
+}
+
+<h2 class="text-success">Edit Expense</h2>
+<form asp-action="Delete" method="post" enctype="multipart/form-data" class="text-light lead">
+    <input type="hidden" asp-for="ExpenseId" />
+    <div class="p-4 rounded border">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        <h3>@ViewBag.message</h3>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="EName"></label>
+            </div>
+            <div class="col-10">
+                <input asp-for="EName" class="form-group" readonly="readonly"/>
+            </div>
+            <span asp-validation-for="EName" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Amount"></label>
+            </div>
+            <div class="col-10">
+                <input asp-for="Amount" class="form-group" readonly="readonly"/>
+            </div>
+            <span asp-validation-for="Amount" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="EDate"></label>
+            </div>
+            <div class="col-10">
+                <input asp-for="EDate" class="form-group" readonly="readonly"/>
+            </div>
+            <span asp-validation-for="EDate" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="CategoriesId">Categories Name</label>
+            </div>
+            <div class="col-3">
+                <select type="text" class="form-select form-select-sm" asp-for="CategoriesId"
+                        asp-items="@(new SelectList(ViewBag.Cat, "CategoriesId","CName"))">
+                    <option value="">select one</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <span asp-validation-for="CategoriesId" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-outline-primary" value="Save" />
+            <a asp-action="Index" class="btn btn-outline-secondary">Back To Index</a>
+
+        </div>
+    </div>
+</form>
