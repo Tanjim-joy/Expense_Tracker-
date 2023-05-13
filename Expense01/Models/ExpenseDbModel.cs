@@ -30,7 +30,7 @@ namespace Expense01.Models
         public string EName { get; set; }
         [Required,Column(TypeName="money")]
         public decimal Amount { get; set; }
-        [Required, Display(Name = "Date"), PastOneDay(ErrorMessage="Please Enter Correct Date")]
+        [Required, Display(Name = "Date"),PastOneDay(ErrorMessage="Please Enter Correct Date")]
         public DateTime EDate { get; set; }
         [Required, ForeignKey("Categories")]
         public int CategoriesId { get; set; }

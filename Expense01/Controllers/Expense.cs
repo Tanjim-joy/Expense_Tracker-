@@ -89,9 +89,11 @@ namespace Expense01.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(daily).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                ViewBag.Cat = db.categories.ToList();
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Cat = db.categories.ToList();
             return View(daily);
         }
 
